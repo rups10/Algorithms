@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+// best case running time O(n), worst case O(n^2)
+int main() {
+    int A[6] = {5,3,1,2,4,6}; // declaring array to sort
+    int key; // constant space to store data
+    int i;
+    for (int j = 1; j < 6; j++){
+        key = A[j]; // storing jth entry in key
+        i = j-1; // comparison from (j-1)th element to 0th element
+        while(i>=0 && A[i] > key){ // shifting to only happen if any number greater than key exists before j
+            A[i+1] = A[i]; // shifting all numbers by 1
+            i = i-1; // going backwards in the array
+        }
+        A[i+1] = key; // i+1 for correction of line 13 after finding the right location to insert key in
+    }
+    
+    for(int k = 0; k < 6; k++){ // output
+        cout << A[k]<<" ";
+    }
+	return 0;
+}
